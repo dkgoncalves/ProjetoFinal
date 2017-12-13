@@ -24,16 +24,19 @@ public class Clientes extends Pessoa implements java.io.Serializable {
         super(nome, sobrenome, endereco, codigo);
     }
         
-        public void cadcli(String nome, String sobrenome, String endereco, int codigo){
+    public void cadcli(String nome, String sobrenome, String endereco, int codigo){
 
             c.setNome(nome);
             c.setSobrenome(sobrenome);
             c.setEndereco(endereco);
             c.setCodigo(codigo);
-        }
-
-
+    }
+    
+   
+    @Override
+   public String sucesso(){
+     
+       return "Cliente" + this.sucesso();
+   }
 
 }
-
-
