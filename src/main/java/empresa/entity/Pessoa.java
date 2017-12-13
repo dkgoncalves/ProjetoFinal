@@ -59,5 +59,10 @@ public class Pessoa {
 
     public int getCodigo() {
         return codigo;
-    } 
+    }
+    
+    public String sucesso(){
+            String sucesso = "cadastrado com sucesso!";
+        return sucesso;
+    }
 }

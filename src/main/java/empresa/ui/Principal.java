@@ -112,11 +112,15 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_sairActionPerformed
 
     private void cadastroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroClientesActionPerformed
-        
+        Cadcli cadcli = new Cadcli();
+        cadcli.setVisible(true);
+        dispose();
     }//GEN-LAST:event_cadastroClientesActionPerformed
 
     private void cadastroFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastroFuncActionPerformed
-        
+        Cadfunc cadfunc = new Cadfunc();
+        cadfunc.setVisible(true);
+        dispose();
     }//GEN-LAST:event_cadastroFuncActionPerformed
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed

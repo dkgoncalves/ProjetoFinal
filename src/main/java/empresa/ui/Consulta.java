@@ -31,6 +31,10 @@ public class Consulta extends javax.swing.JFrame {
     
     private static String QUERY_BASED_ON_FIRST_NAME="from Funcionarios a where a.nome like '";
     private static String QUERY_BASED_ON_LAST_NAME="from Funcionarios a where a.sobrenome like '";
+//    private static String QUERY_BASED_ON_FIRST_NAME_OF_CLI="from Clientes a where a.nome like '";
+//    private static String QUERY_BASED_ON_LAST_NAME_OF_CLI="from Clientes a where a.sobrenome like '";
+    private static String QUERY_ALL_CLIENTES="from Clientes '";
+    private static String QUERY_ALL_FUNCIONARIOS="from Funcionarios '";
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,10 +54,11 @@ public class Consulta extends javax.swing.JFrame {
         resultTable = new javax.swing.JTable();
         voltar = new javax.swing.JButton();
         sair = new javax.swing.JButton();
+        listAll = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("ActionProfile");
+        jLabel1.setText("Painel de consultas");
 
         jLabel2.setText("Nome");
 
@@ -100,6 +105,13 @@ public class Consulta extends javax.swing.JFrame {
             }
         });
 
+        listAll.setText("Listar Cadastrados");
+        listAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listAllActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -118,26 +130,27 @@ public class Consulta extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(21, 21, 21)
-                                        .addComponent(jLabel2)
-                                        .addGap(73, 73, 73))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(60, 60, 60)
-                                        .addComponent(queryButton))
-                                    .addComponent(jLabel3)))
+                                .addGap(21, 21, 21)
+                                .addComponent(jLabel2)
+                                .addGap(73, 73, 73))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(183, 183, 183)
-                                .addComponent(jLabel1)))
+                                .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60)
+                                .addComponent(queryButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(listAll)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(205, 205, 205)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,7 +165,8 @@ public class Consulta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(queryButton))
+                    .addComponent(queryButton)
+                    .addComponent(listAll))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
@@ -165,12 +179,21 @@ public class Consulta extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     private void runQueryBasedOnFirstName() {
-    executeHQLQuery(QUERY_BASED_ON_FIRST_NAME + firstNameTextField.getText() + "%'");
+    executeHQLQuery (QUERY_BASED_ON_FIRST_NAME + firstNameTextField.getText() + "%'");
     }
     
     private void runQueryBasedOnLastName() {
     executeHQLQuery(QUERY_BASED_ON_LAST_NAME + lastNameTextField.getText() + "%'");
     }
+    
+    private void runQueryAllClientes(){
+        executeHQLQuery(QUERY_ALL_CLIENTES + "%'");
+    }
+    
+    private void runQueryAllFuncionarios(){
+        executeHQLQuery(QUERY_ALL_FUNCIONARIOS + "%'");
+    }
+    
     private void queryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryButtonActionPerformed
         if(!firstNameTextField.getText().trim().equals("")) {
         runQueryBasedOnFirstName();
@@ -188,6 +211,11 @@ public class Consulta extends javax.swing.JFrame {
     private void sairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_sairActionPerformed
+
+    private void listAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAllActionPerformed
+        
+        runQueryAllFuncionarios();
+    }//GEN-LAST:event_listAllActionPerformed
     
     private void displayResult(List resultList) {
     Vector<String> tableHeaders = new Vector<String>();
@@ -210,6 +238,18 @@ public class Consulta extends javax.swing.JFrame {
         oneRow.add(func.getSalario());
         tableData.add(oneRow);
     }
+    
+//    for(Object o : resultList) {
+//        Clientes cliente = (Clientes)o;
+//        Vector<Object> oneRow = new Vector<Object>();
+//        oneRow.add(cliente.getId());
+//        oneRow.add(cliente.getNome());
+//        oneRow.add(cliente.getSobrenome());
+//        oneRow.add(cliente.getEndereco());
+//        oneRow.add(cliente.getCodigo());
+//        oneRow.add("N/A");
+//        tableData.add(oneRow);
+//   }
     resultTable.setModel(new DefaultTableModel(tableData, tableHeaders));
 }
     
@@ -268,6 +308,7 @@ public class Consulta extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField lastNameTextField;
+    private javax.swing.JButton listAll;
     private javax.swing.JButton queryButton;
     private javax.swing.JTable resultTable;
     private javax.swing.JButton sair;
