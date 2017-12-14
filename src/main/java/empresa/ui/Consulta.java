@@ -72,17 +72,10 @@ public class Consulta extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+                "ID", "Nome", "Sobrenome", "Endereço", "Código"
             }
         ));
         jScrollPane1.setViewportView(resultTable);
-        if (resultTable.getColumnModel().getColumnCount() > 0) {
-            resultTable.getColumnModel().getColumn(0).setHeaderValue("Title 1");
-            resultTable.getColumnModel().getColumn(1).setHeaderValue("Title 2");
-            resultTable.getColumnModel().getColumn(2).setHeaderValue("Title 3");
-            resultTable.getColumnModel().getColumn(3).setHeaderValue("Title 4");
-            resultTable.getColumnModel().getColumn(4).setHeaderValue("Title 5");
-        }
 
         voltar.setText("Voltar");
         voltar.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +278,6 @@ public class Consulta extends javax.swing.JFrame {
     tableHeaders.add("sobrenome");
     tableHeaders.add("endereco");
     tableHeaders.add("codigo");
-    tableHeaders.add("salario");
     
     for(Object a : resultList) {
         Clientes cliente = (Clientes)a;
