@@ -11,7 +11,6 @@ Requisitos Funcionais:
   
  
 Requisitos Não Funcionais:
-  - Nenhum cadastro pode ser totalmente excluído do banco de dados do sistema
   - Necessário os dados do cliente para efetuar o cadastro
   - Possibilidade de rodar em qualquer Sistema Operacional
   
