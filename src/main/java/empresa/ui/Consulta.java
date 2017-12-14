@@ -31,8 +31,8 @@ public class Consulta extends javax.swing.JFrame {
     
     private static String QUERY_BASED_ON_FIRST_NAME="from Funcionarios a where a.nome like '";
     private static String QUERY_BASED_ON_LAST_NAME="from Funcionarios a where a.sobrenome like '";
-//    private static String QUERY_BASED_ON_FIRST_NAME_OF_CLI="from Clientes a where a.nome like '";
-//    private static String QUERY_BASED_ON_LAST_NAME_OF_CLI="from Clientes a where a.sobrenome like '";
+    private static String QUERY_BASED_ON_FIRST_NAME_OF_CLI="from Clientes a where a.nome like '";
+    private static String QUERY_BASED_ON_LAST_NAME_OF_CLI="from Clientes a where a.sobrenome like '";
     private static String QUERY_ALL_CLIENTES="from Clientes '";
     private static String QUERY_ALL_FUNCIONARIOS="from Funcionarios '";
     /**
@@ -47,7 +47,6 @@ public class Consulta extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        queryButton = new javax.swing.JButton();
         lastNameTextField = new javax.swing.JTextField();
         firstNameTextField = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -55,6 +54,7 @@ public class Consulta extends javax.swing.JFrame {
         voltar = new javax.swing.JButton();
         sair = new javax.swing.JButton();
         listAll = new javax.swing.JButton();
+        listAllCli = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,13 +63,6 @@ public class Consulta extends javax.swing.JFrame {
         jLabel2.setText("Nome");
 
         jLabel3.setText("Sobrenome");
-
-        queryButton.setText("Consulta");
-        queryButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                queryButtonActionPerformed(evt);
-            }
-        });
 
         resultTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -105,10 +98,17 @@ public class Consulta extends javax.swing.JFrame {
             }
         });
 
-        listAll.setText("Listar Cadastrados");
+        listAll.setText("Consultar Funcionários");
         listAll.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 listAllActionPerformed(evt);
+            }
+        });
+
+        listAllCli.setText("Consultar Clientes");
+        listAllCli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listAllCliActionPerformed(evt);
             }
         });
 
@@ -126,50 +126,48 @@ public class Consulta extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addComponent(jLabel2)
-                                .addGap(73, 73, 73))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel1)
+                                .addGap(63, 63, 63))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(60, 60, 60)
-                                .addComponent(queryButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(listAll)))
+                                .addGap(35, 35, 35)
+                                .addComponent(listAllCli)
+                                .addGap(18, 18, 18)))
+                        .addComponent(listAll)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(205, 205, 205)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(queryButton)
-                    .addComponent(listAll))
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
+                        .addGap(3, 3, 3)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(listAll)
+                            .addComponent(listAllCli)
+                            .addComponent(lastNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(firstNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel1))
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(voltar)
                     .addComponent(sair))
@@ -178,6 +176,8 @@ public class Consulta extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+   
+    //CONSULTAS CLIENTES
     private void runQueryBasedOnFirstName() {
     executeHQLQuery (QUERY_BASED_ON_FIRST_NAME + firstNameTextField.getText() + "%'");
     }
@@ -186,22 +186,24 @@ public class Consulta extends javax.swing.JFrame {
     executeHQLQuery(QUERY_BASED_ON_LAST_NAME + lastNameTextField.getText() + "%'");
     }
     
-    private void runQueryAllClientes(){
-        executeHQLQuery(QUERY_ALL_CLIENTES + "%'");
-    }
-    
     private void runQueryAllFuncionarios(){
         executeHQLQuery(QUERY_ALL_FUNCIONARIOS + "%'");
     }
     
-    private void queryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queryButtonActionPerformed
-        if(!firstNameTextField.getText().trim().equals("")) {
-        runQueryBasedOnFirstName();
-    } else if(!lastNameTextField.getText().trim().equals("")) {
-        runQueryBasedOnLastName();
+    //CONSULTAS CLIENTES
+    private void runQueryBasedOnFirstNameOfCli(){
+    executeHQLQueryCli (QUERY_BASED_ON_FIRST_NAME_OF_CLI + firstNameTextField.getText() + "%'");
     }
-    }//GEN-LAST:event_queryButtonActionPerformed
-
+    private void runQueryBasedOnLastNameOfCli() {
+    executeHQLQueryCli(QUERY_BASED_ON_LAST_NAME_OF_CLI + lastNameTextField.getText() + "%'");
+    }
+    
+    private void runQueryAllClientes(){
+        executeHQLQueryCli(QUERY_ALL_CLIENTES + "%'");
+    }
+    
+    
+    
     private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
         Principal volta = new Principal();
         volta.setVisible(true);
@@ -213,10 +215,28 @@ public class Consulta extends javax.swing.JFrame {
     }//GEN-LAST:event_sairActionPerformed
 
     private void listAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAllActionPerformed
-        
-        runQueryAllFuncionarios();
+        if(!firstNameTextField.getText().trim().equals("")){
+            runQueryBasedOnFirstName();
+        }
+        else if(!lastNameTextField.getText().trim().equals("")){
+            runQueryBasedOnLastName();
+        }
+        else
+            runQueryAllFuncionarios();
     }//GEN-LAST:event_listAllActionPerformed
+
+    private void listAllCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listAllCliActionPerformed
+        if(!firstNameTextField.getText().trim().equals("")){
+            runQueryBasedOnFirstNameOfCli();
+        }
+        else if(!lastNameTextField.getText().trim().equals("")){
+            runQueryBasedOnLastNameOfCli();
+        }
+        else
+            runQueryAllClientes();
+    }//GEN-LAST:event_listAllCliActionPerformed
     
+    //LISTAR FUNCIONÁRIOS
     private void displayResult(List resultList) {
     Vector<String> tableHeaders = new Vector<String>();
     Vector tableData = new Vector(); 
@@ -238,18 +258,8 @@ public class Consulta extends javax.swing.JFrame {
         oneRow.add(func.getSalario());
         tableData.add(oneRow);
     }
-    
-//    for(Object o : resultList) {
-//        Clientes cliente = (Clientes)o;
-//        Vector<Object> oneRow = new Vector<Object>();
-//        oneRow.add(cliente.getId());
-//        oneRow.add(cliente.getNome());
-//        oneRow.add(cliente.getSobrenome());
-//        oneRow.add(cliente.getEndereco());
-//        oneRow.add(cliente.getCodigo());
-//        oneRow.add("N/A");
-//        tableData.add(oneRow);
-//   }
+        
+   
     resultTable.setModel(new DefaultTableModel(tableData, tableHeaders));
 }
     
@@ -260,6 +270,44 @@ public class Consulta extends javax.swing.JFrame {
         Query q = session.createQuery(hql);
         List resultList = q.list();
         displayResult(resultList);
+        session.getTransaction().commit();
+    } catch (HibernateException he) {
+        he.printStackTrace();
+    }
+    }
+    
+    //LISTAR CLIENTES
+    private void displayResultCli(List resultList) {
+    Vector<String> tableHeaders = new Vector<String>();
+    Vector tableData = new Vector(); 
+    tableHeaders.add("id");
+    tableHeaders.add("nome");
+    tableHeaders.add("sobrenome");
+    tableHeaders.add("endereco");
+    tableHeaders.add("codigo");
+    tableHeaders.add("salario");
+    
+    for(Object a : resultList) {
+        Clientes cliente = (Clientes)a;
+        Vector<Object> oneRow = new Vector<Object>();
+        oneRow.add(cliente.getId());
+        oneRow.add(cliente.getNome());
+        oneRow.add(cliente.getSobrenome());
+        oneRow.add(cliente.getEndereco());
+        oneRow.add(cliente.getCodigo());
+        tableData.add(oneRow);
+   }
+   
+    resultTable.setModel(new DefaultTableModel(tableData, tableHeaders));
+}
+    
+    private void executeHQLQueryCli(String hql) {
+    try {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query q = session.createQuery(hql);
+        List resultList = q.list();
+        displayResultCli(resultList);
         session.getTransaction().commit();
     } catch (HibernateException he) {
         he.printStackTrace();
@@ -309,7 +357,7 @@ public class Consulta extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField lastNameTextField;
     private javax.swing.JButton listAll;
-    private javax.swing.JButton queryButton;
+    private javax.swing.JButton listAllCli;
     private javax.swing.JTable resultTable;
     private javax.swing.JButton sair;
     private javax.swing.JButton voltar;
