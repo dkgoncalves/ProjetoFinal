@@ -35,8 +35,12 @@ public class Funcionarios extends Pessoa implements java.io.Serializable {
     public void setSalario(BigDecimal salario) {
         this.salario = salario;
     }
+    
+    @Override
+    public String sucesso(){
         
-
+        return "Funcionário cadastrado com sucesso";
+    }
 
 
 

@@ -62,7 +62,7 @@ public class Pessoa {
     }
     
     public String sucesso(){
-            String sucesso = "cadastrado com sucesso!";
-        return sucesso;
+        
+        return "Cliente cadastrado com sucesso!!";
     }
 }

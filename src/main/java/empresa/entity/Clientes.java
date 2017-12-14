@@ -36,7 +36,7 @@ public class Clientes extends Pessoa implements java.io.Serializable {
     @Override
    public String sucesso(){
      
-       return "Cliente" + this.sucesso();
+       return "Cliente cadastrado com sucesso";
    }
 
 }

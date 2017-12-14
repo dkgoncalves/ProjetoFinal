@@ -182,7 +182,7 @@ public class Cadfunc extends javax.swing.JFrame {
             session.getTransaction().commit();
             session.close();
            
-            JOptionPane.showMessageDialog(null, "Cadastro efetuado com Sucesso!", "OK", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, func.sucesso(), "OK", JOptionPane.INFORMATION_MESSAGE);
             
             Principal principal = new Principal();
             principal.setVisible(true);
