@@ -169,7 +169,7 @@ public class Cadcli extends javax.swing.JFrame {
             session.getTransaction().commit();
             session.close();
            
-            JOptionPane.showMessageDialog(null, "Cadastro efetuado com Sucesso!", "OK", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, cliente.sucesso() , "OK", JOptionPane.INFORMATION_MESSAGE);
             
             Principal principal = new Principal();
             principal.setVisible(true);
